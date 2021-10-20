@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="backend/Spring/aluguelcarros/.mvn/wrapper"/>
+	<classpathentry kind="src" path="backend/Spring/aluguelcarros/src/main/java"/>
+	<classpathentry kind="src" path="backend/Spring/aluguelcarros/src/test/java"/>
+	<classpathentry kind="lib" path="backend/Spring/aluguelcarros/lib/json-20080701.jar"/>
+	<classpathentry kind="lib" path="backend/Spring/aluguelcarros/lib/mysql-connector.jar"/>
+	<classpathentry kind="output" path="backend/Spring/aluguelcarros/target/classes"/>
+</classpath>
