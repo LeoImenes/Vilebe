@@ -67,5 +67,6 @@ public class ClienteController {
 		}
 		cliente = new Cliente(args);
 		ClienteProcess.updtCliente(objJSON.getString("idCliente"), cliente);
+		
 	}
 }

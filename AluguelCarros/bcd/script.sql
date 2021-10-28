@@ -22,28 +22,19 @@ create table Telefone(
     telefone VARCHAR (20) not null
 );
 
-create table Tipo(
-    idTipo integer not null auto_increment primary key,
-    Tipo VARCHAR(40) not null
-);
-
-create table Caracteristicas(
-    idCara integer not null auto_increment primary key,
-    modelo VARCHAR(30) not null,
-    placa VARCHAR(10) not null,
-    marca VARCHAR(30) not null,
-    espf VARCHAR(150) not null
-);
-
 create table Veiculo(
     idVeiculo integer not null auto_increment primary key,
-    idTipo integer not null,
-    idCara integer not null,
-    DataRevisao DATE not null,
-    KM_Inicial VARCHAR(50) not null
+    tipo varchar(50) not null,
+    modelo VARCHAR(50) not null,
+    marca VARCHAR(50) not null,
+    placa VARCHAR(50) not null,
+    espf VARCHAR(150) not null,
+    datarevisao varchar(15) not null,
+    kminit varchar(100) not null
+
 );
 
-create table Locacoes(
+create table Locacao(
     idLoc integer not null auto_increment primary key,
     idAero integer not null,
     idCliente integer not null,
@@ -64,57 +55,50 @@ create table Venda(
     DataCompra date not null
 );
 
-create table Aeroportos(
+create table Aeroporto(
     idAero integer not null auto_increment primary key,
-    estado varchar(3) not null
+    Nome VARCHAR(50),
+    Estado VARCHAR(2)
 );
+
 
 alter table
     Telefone
 add
     constraint fk_telefone foreign key (idCliente) references Cliente(idCliente);
 
-alter table
-    Veiculo
-add
-    constraint fk_Cara foreign key (idCara) references Caracteristicas(idCara);
 
 alter table
-    Veiculo
-add
-    constraint fk_tipo foreign key (idTipo) references Tipo(idTipo);
-
-alter table
-    Locacoes
+    Locacao
 add
     constraint fk_idCliente foreign key (idCliente) references Cliente(idCliente);
 
 alter table
-    Locacoes
+    Locacao
 add
     constraint fk_idVeiculo foreign key (idVeiculo) references Veiculo(idVeiculo);
 
 alter table
     Venda
 add
-    constraint fk_iAero foreign key (idAero) references Aeroportos(idAero);
+    constraint fk_iAero foreign key (idAero) references Aeroporto(idAero);
 
 alter table
     Venda
 add
-    constraint fk_idCliente2 foreign key (idCliente) references Locacoes(idCliente);
+    constraint fk_idCliente2 foreign key (idCliente) references Locacao(idCliente);
 
 alter table
     Venda
 add
-    constraint fk_idVeiculo2 foreign key (idVeiculo) references Locacoes(idVeiculo);
+    constraint fk_idVeiculo2 foreign key (idVeiculo) references Locacao(idVeiculo);
 
 alter table
     Venda
 add
-    constraint fk_idLoc foreign key (idLoc) references Locacoes(idLoc);
+    constraint fk_idLoc foreign key (idLoc) references Locacao(idLoc);
 
 alter table
     Venda
 add
-    constraint fk_iAero2 foreign key (idAero) references Aeroportos(idAero);
+    constraint fk_iAero2 foreign key (idAero) references Aeroporto(idAero);
