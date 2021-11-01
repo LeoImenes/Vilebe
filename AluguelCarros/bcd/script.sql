@@ -43,22 +43,15 @@ create table Locacao(
     DataRetirada date not null,
     LocalRetirada VARCHAR(150) not null,
     LocalDevolucao VARCHAR(150) not null,
-    KM_Final VARCHAR(50) not null
+
 );
 
-create table Venda(
-    idLoc integer not null auto_increment primary key,
-    idVeiculo integer not null,
-    idCliente integer not null,
-    idAero integer not null,
-    ValorDiaria decimal(9, 2) not null,
-    DataCompra date not null
-);
+
 
 create table Aeroporto(
     idAero integer not null auto_increment primary key,
-    Nome VARCHAR(50),
-    Estado VARCHAR(2)
+    Nome VARCHAR(100),
+    Estado VARCHAR(3)
 );
 
 
