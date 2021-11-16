@@ -23,14 +23,14 @@ public class VeiculoController {
 	private JSONObject jsonOBJ;
 	private Veiculo veiculo;
 
-	@GetMapping(path = "/api/locadora/veiculo")
+	@GetMapping(path = "/locadora/veiculo")
 	public ArrayList<Veiculo> abrirVeiculo() {
 		VeiculoProcess.abrir();
 		return VeiculoProcess.veiculos;
 
 	}
 
-	@GetMapping(path = "/api/locadora/veiculos")
+	@GetMapping(path = "//locadora/veiculos")
 	public Veiculo abrirVeiculo(@RequestBody String json) throws JSONException {
 		VeiculoProcess.abrir();
 		jsonOBJ = new JSONObject();
@@ -42,26 +42,26 @@ public class VeiculoController {
 
 	}
 
-	@PostMapping(path = "/api/locadora/veiculo")
+	@PostMapping(path = "/locadora/veiculo")
 	public void criarVeiculo(@RequestBody String body) throws JSONException {
 		jsonOBJ = new JSONObject(body);
-		veiculo = new Veiculo(jsonOBJ.getString("tipo"), jsonOBJ.getString("modelo"), jsonOBJ.getString("marca"),
-				jsonOBJ.getString("placa"), jsonOBJ.getString("espf"), jsonOBJ.getString("datarevisao"),
-				jsonOBJ.getString("kminit"));
+		veiculo = new Veiculo(0, jsonOBJ.getString("tipo"), jsonOBJ.getString("modelo"), jsonOBJ.getString("marca"),
+				jsonOBJ.getString("placa"), jsonOBJ.getString("espf"), jsonOBJ.getString("img")
+);
 		VeiculoProcess.addVeiculo(veiculo);
 
 	}
 
-	@DeleteMapping(path = "/api/locadora/veiculo")
+	@DeleteMapping(path = "/locadora/veiculo")
 	public void excluirVeiculo(@RequestBody String id) throws JSONException {
 		jsonOBJ = new JSONObject(id);
 		VeiculoProcess.delVeiculo(jsonOBJ.getString("idVeiculo"));
 	}
 
-	@PutMapping(path = "/api/locadora/veiculo")
+	@PutMapping(path = "/locadora/veiculo")
 	public void alterarVeiculo(@RequestBody String body) throws JSONException {
 		jsonOBJ = new JSONObject(body);
-		String[] params = { "tipo", "modelo", "marca", "placa", "espf", "datarevisao", "kminti" };
+		String[] params = { "tipo", "modelo", "marca", "placa", "espf","img" };
 		Map<String, String> args = new HashMap<String, String>();
 		for (int i = 0; i < params.length; i++) {
 			if (!jsonOBJ.isNull(params[i])) {

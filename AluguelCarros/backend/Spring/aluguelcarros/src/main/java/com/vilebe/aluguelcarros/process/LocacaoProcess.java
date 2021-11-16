@@ -18,5 +18,12 @@ public class LocacaoProcess {
 			e.printStackTrace();
 		}
 	}
-
+	public static void criar(Locacao loc) {
+		try {
+			ld.criar(loc);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
+

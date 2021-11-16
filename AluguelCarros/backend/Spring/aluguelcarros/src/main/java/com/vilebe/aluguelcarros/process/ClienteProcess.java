@@ -5,42 +5,28 @@ import java.util.ArrayList;
 
 import com.vilebe.aluguelcarros.dao.ClienteDAO;
 import com.vilebe.aluguelcarros.domains.Cliente;
-
-
+import com.vilebe.aluguelcarros.domains.Login;
 
 public class ClienteProcess {
 	public static ArrayList<Cliente> clientes = new ArrayList<>();
 	public static ClienteDAO cd = new ClienteDAO();
 	
-	public static void abrir(){
+	public static void abrir() {
 		try {
 			clientes = cd.readAll();
-		} catch (SQLException e) {
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void addCliente(Cliente cliente){
+	public static void criar(Cliente cliente, Login login) {
 		try {
-			cd.AddClienteSQL(cliente);
-		} catch (SQLException e) {
+			cd.cadastrarCliente(cliente, login);
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void delCliente(String idCliente){
-		try {
-			cd.DelClienteSQL(idCliente);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static void updtCliente(String idCliente, Cliente cliente) {
-		try {
-			cd.UpdtClienteSQL(idCliente, cliente);
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
+	public static void deletarCliente(String id) throws SQLException {
+		cd.delCliente(id);
 	}
 }

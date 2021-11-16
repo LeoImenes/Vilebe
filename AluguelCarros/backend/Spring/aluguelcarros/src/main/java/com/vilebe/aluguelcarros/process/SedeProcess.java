@@ -3,40 +3,40 @@ package com.vilebe.aluguelcarros.process;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.vilebe.aluguelcarros.dao.AeroportoDAO;
-import com.vilebe.aluguelcarros.domains.Aeroporto;
+import com.vilebe.aluguelcarros.dao.SedeDAO;
+import com.vilebe.aluguelcarros.domains.Sede;
 
-public class AeroportoProcess {
-	public static ArrayList<Aeroporto>aeroportos = new ArrayList<>();
-	public static AeroportoDAO ad = new AeroportoDAO();
+public class SedeProcess {
+	public static ArrayList<Sede>sedes = new ArrayList<>();
+	public static SedeDAO ad = new SedeDAO();
 	
 	public static void abrir() {
 		try {
-			aeroportos = ad.readAll();
+			sedes = ad.readAll();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public static void addAero(Aeroporto aeroporto) {
+	public static void addSede(Sede sede) {
 		try {
-			ad.addaeroportosQL(aeroporto);
+			ad.addSedeSQL(sede);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public static void delAero(String id) {
+	public static void delSede(String id) {
 		try {
-			ad.delaeroportosQL(id);
+			ad.delSedeSQL(id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	public static void updtAero(String id, Aeroporto aeroporto ) {
+	public static void updtSede(String id, Sede sede ) {
 		try {
-			ad.updtaeroportosQL(id, aeroporto);
+			ad.updtSedeSQL(id, sede);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

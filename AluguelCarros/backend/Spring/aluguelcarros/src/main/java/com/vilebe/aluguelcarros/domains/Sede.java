@@ -3,46 +3,46 @@ package com.vilebe.aluguelcarros.domains;
 import java.util.Map;
 import java.util.Objects;
 
-public class Aeroporto {
-	private int idAero;
+public class Sede {
+	private int idSede;
 	private String nome;
 	private String estado;
 
-	public Aeroporto(int idAero, String nome, String estado) {
+	public Sede(int idSede, String nome, String estado) {
 
-		this.idAero = idAero;
+		this.idSede = idSede;
 		this.nome = nome;
 		this.estado = estado;
 	}
 
-	public Aeroporto(String idAero, String nome, String estado) {
+	public Sede(String idSede, String nome, String estado) {
 
-		this.idAero = Integer.parseInt(idAero);
+		this.idSede = Integer.parseInt(idSede);
 		this.nome = nome;
 		this.estado = estado;
 	}
 
-	public Aeroporto() {
+	public Sede() {
 
 	}
 
-	public Aeroporto(int idAero) {
+	public Sede(int idSede) {
 
-		this.idAero = idAero;
+		this.idSede = idSede;
 	}
 
-	public Aeroporto(String idAero) {
+	public Sede(String idSede) {
 
-		this.idAero = Integer.parseInt(idAero);
+		this.idSede = Integer.parseInt(idSede);
 	}
 
-	public Aeroporto(String nome, String estado) {
+	public Sede(String nome, String estado) {
 
 		this.nome = nome;
 		this.estado = estado;
 	}
 
-	public Aeroporto(Map<String, String> args) {
+	public Sede(Map<String, String> args) {
 		if (args.containsKey("nome")) {
 			this.nome = args.get("nome");
 		}
@@ -52,12 +52,12 @@ public class Aeroporto {
 
 	}
 
-	public int getidAero() {
-		return idAero;
+	public int getidSede() {
+		return idSede;
 	}
 
-	public void setidAero(int idAero) {
-		this.idAero = idAero;
+	public void setidSede(int idSede) {
+		this.idSede = idSede;
 	}
 
 	public String getNome() {
@@ -78,7 +78,7 @@ public class Aeroporto {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idAero);
+		return Objects.hash(idSede);
 	}
 
 	@Override
@@ -89,13 +89,13 @@ public class Aeroporto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Aeroporto other = (Aeroporto) obj;
-		return idAero == other.idAero;
+		Sede other = (Sede) obj;
+		return idSede == other.idSede;
 	}
 
 	@Override
 	public String toString() {
-		return idAero + "\t" + nome + "\t" + estado + "\r\n";
+		return idSede + "\t" + nome + "\t" + estado + "\r\n";
 	}
 
 }

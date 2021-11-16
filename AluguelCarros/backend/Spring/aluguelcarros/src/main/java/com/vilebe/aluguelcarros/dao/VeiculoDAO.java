@@ -26,8 +26,7 @@ public class VeiculoDAO {
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			veiculo = new Veiculo(rs.getInt("idVeiculo"), rs.getString("tipo"), rs.getString("modelo"),
-					rs.getString("marca"), rs.getString("placa"), rs.getString("espf"), rs.getString("datarevisao"),
-					rs.getString("kminit"));
+					rs.getString("marca"), rs.getString("placa"), rs.getString("espf"), rs.getString("img"));
 			veiculos.add(veiculo);
 		}
 		con.close();
@@ -36,7 +35,7 @@ public class VeiculoDAO {
 	}
 
 	public void addVeiculoSQL(Veiculo veiculo) throws SQLException {
-		String query = "insert into veiculo (tipo,modelo,marca,placa,espf,datarevisao,kminit) values (?,?,?,?,?,?,?)";
+		String query = "insert into veiculo (tipo,modelo,marca,placa,espf,img) values (?,?,?,?,?,?)";
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(query);
 		ps.setString(1, veiculo.getTipo());
@@ -44,8 +43,8 @@ public class VeiculoDAO {
 		ps.setString(3, veiculo.getMarca());
 		ps.setString(4, veiculo.getPlaca());
 		ps.setString(5, veiculo.getEspf());
-		ps.setString(6, veiculo.getDatarevisao());
-		ps.setString(7, veiculo.getKminit());
+		ps.setString(6, veiculo.getImg());
+	
 		ps.execute();
 		con.close();
 	}
@@ -75,12 +74,10 @@ public class VeiculoDAO {
 		if (veiculo.getEspf() != null) {
 			query += "espf = '" + veiculo.getEspf() + "', ";
 		}
-		if (veiculo.getDatarevisao() != null) {
-			query += "dataravisao = '" + veiculo.getDatarevisao() + "', ";
+		if (veiculo.getImg() != null) {
+			query += "img = '" + veiculo.getImg() + "', ";
 		}
-		if (veiculo.getKminit() != null) {
-			query += "kminit = '" + veiculo.getKminit() + "', ";
-		}
+
 		if (query.endsWith(", ")) {
 			query = query.substring(0, query.length() - 1);
 			query = query.substring(0, query.length() - 1);

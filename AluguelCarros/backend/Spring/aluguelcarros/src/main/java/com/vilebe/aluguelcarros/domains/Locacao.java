@@ -1,70 +1,66 @@
 package com.vilebe.aluguelcarros.domains;
 
-import java.util.Date;
+import static java.lang.Integer.parseInt;
+
 import java.util.Objects;
 
 public class Locacao {
 	private int idLoc;
-	private Aeroporto idAero;
 	private Cliente idCliente;
 	private Veiculo idVeiculo;
-	private Date DataDevolucao;
-	private Date DataRetirada;
+	private String DataDevolucao;
+	private String DataRetirada;
 	private String LocalRetirada;
 	private String LocalDevolucao;
-	private String kmfin;
 
-	public Locacao(int idLoc, Aeroporto idAero, Cliente idCliente, Veiculo idVeiculo, Date dataDevolucao,
-			Date dataRetirada, String localRetirada, String localDevolucao, String kmfin) {
-		
+	public Locacao(int idLoc, Cliente idCliente, Veiculo idVeiculo, String dataDevolucao, String dataRetirada,
+			String localRetirada, String localDevolucao) {
+
 		this.idLoc = idLoc;
-		this.idAero = idAero;
 		this.idCliente = idCliente;
 		this.idVeiculo = idVeiculo;
 		DataDevolucao = dataDevolucao;
 		DataRetirada = dataRetirada;
 		LocalRetirada = localRetirada;
 		LocalDevolucao = localDevolucao;
-		this.kmfin = kmfin;
 	}
 
-	public Locacao(Aeroporto idAero, Cliente idCliente, Veiculo idVeiculo, Date dataDevolucao, Date dataRetirada,
-			String localRetirada, String localDevolucao, String kmfin) {
+	public Locacao(Cliente idCliente, Veiculo idVeiculo, String dataDevolucao, String dataRetirada,
+			String localRetirada, String localDevolucao) {
 
-		this.idAero = idAero;
 		this.idCliente = idCliente;
 		this.idVeiculo = idVeiculo;
 		DataDevolucao = dataDevolucao;
 		DataRetirada = dataRetirada;
 		LocalRetirada = localRetirada;
 		LocalDevolucao = localDevolucao;
-		this.kmfin = kmfin;
 	}
 
-	public Locacao() {
+	public Locacao(String idLoc, Cliente idCliente, Veiculo idVeiculo, String dataDevolucao, String dataRetirada,
+			String localRetirada, String localDevolucao) {
 
-	}
-
-	public Locacao(String idLoc, Aeroporto idAero, Cliente idCliente, Veiculo idVeiculo, Date dataDevolucao,
-			Date dataRetirada, String localRetirada, String localDevolucao, String kmfin) {
-		
-		this.idLoc = Integer.parseInt(idLoc);
-		this.idAero = new Aeroporto();
-		this.idCliente = new Cliente();
-		this.idVeiculo = new Veiculo();
+		this.idLoc = parseInt(idLoc);
+		this.idCliente = idCliente;
+		this.idVeiculo = idVeiculo;
 		DataDevolucao = dataDevolucao;
 		DataRetirada = dataRetirada;
 		LocalRetirada = localRetirada;
 		LocalDevolucao = localDevolucao;
-		this.kmfin = kmfin;
 	}
+	
 
+
+	public Locacao(int idLoc) {
+
+		this.idLoc = idLoc;
+	}
+	
 	public Locacao(String idLoc) {
 		this.idLoc = Integer.parseInt(idLoc);
 	}
-
-	public Locacao(int idLoc) {
-		this.idLoc = idLoc;
+	
+	public Locacao() {
+		
 	}
 
 	public int getIdLoc() {
@@ -73,14 +69,6 @@ public class Locacao {
 
 	public void setIdLoc(int idLoc) {
 		this.idLoc = idLoc;
-	}
-
-	public Aeroporto getIdAero() {
-		return idAero;
-	}
-
-	public void setIdAero(Aeroporto idAero) {
-		this.idAero = idAero;
 	}
 
 	public Cliente getIdCliente() {
@@ -99,19 +87,19 @@ public class Locacao {
 		this.idVeiculo = idVeiculo;
 	}
 
-	public Date getDataDevolucao() {
+	public String getDataDevolucao() {
 		return DataDevolucao;
 	}
 
-	public void setDataDevolucao(Date dataDevolucao) {
+	public void setDataDevolucao(String dataDevolucao) {
 		DataDevolucao = dataDevolucao;
 	}
 
-	public Date getDataRetirada() {
+	public String getDataRetirada() {
 		return DataRetirada;
 	}
 
-	public void setDataRetirada(Date dataRetirada) {
+	public void setDataRetirada(String dataRetirada) {
 		DataRetirada = dataRetirada;
 	}
 
@@ -129,37 +117,6 @@ public class Locacao {
 
 	public void setLocalDevolucao(String localDevolucao) {
 		LocalDevolucao = localDevolucao;
-	}
-
-	public String getKmfin() {
-		return kmfin;
-	}
-
-	public void setKmfin(String kmfin) {
-		this.kmfin = kmfin;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(idLoc);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Locacao other = (Locacao) obj;
-		return idLoc == other.idLoc;
-	}
-
-	@Override
-	public String toString() {
-		return idLoc + "\t" + idAero + "\t" + idCliente + "\t" + idVeiculo + "\t" + DataDevolucao + "\t" + DataRetirada
-				+ "\t" + LocalRetirada + "\t" + LocalDevolucao + "\t" + kmfin + "\r\n";
 	}
 
 }

@@ -1,9 +1,0 @@
-.inputs {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    width: 12vh;
-    height: 2vh;
-    margin-top: 1%;
-}

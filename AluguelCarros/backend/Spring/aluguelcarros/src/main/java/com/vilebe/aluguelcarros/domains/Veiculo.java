@@ -10,8 +10,7 @@ public class Veiculo {
 	private String marca;
 	private String placa;
 	private String espf;
-	private String datarevisao;
-	private String kminit;
+	private String img;
 
 	public Veiculo() {
 
@@ -25,8 +24,7 @@ public class Veiculo {
 		this.idVeiculo = Integer.parseInt(idVeiculo);
 	}
 
-	public Veiculo(int idVeiculo, String tipo, String modelo, String marca, String placa, String espf,
-			String datarevisao, String kminit) {
+	public Veiculo(int idVeiculo, String tipo, String modelo, String marca, String placa, String espf, String img) {
 
 		this.idVeiculo = idVeiculo;
 		this.tipo = tipo;
@@ -34,25 +32,11 @@ public class Veiculo {
 		this.marca = marca;
 		this.placa = placa;
 		this.espf = espf;
-		this.datarevisao = datarevisao;
-		this.kminit = kminit;
-	}
-	
+		this.img = img;
 
-	public Veiculo(String tipo, String modelo, String marca, String placa, String espf, String datarevisao,
-			String kminit) {
-
-		this.tipo = tipo;
-		this.modelo = modelo;
-		this.marca = marca;
-		this.placa = placa;
-		this.espf = espf;
-		this.datarevisao = datarevisao;
-		this.kminit = kminit;
 	}
 
-	public Veiculo(String idVeiculo, String tipo, String modelo, String marca, String placa, String espf,
-			String datarevisao, String kminit) {
+	public Veiculo(String idVeiculo, String tipo, String modelo, String marca, String placa, String espf,String img) {
 
 		this.idVeiculo = Integer.parseInt(idVeiculo);
 		this.tipo = tipo;
@@ -60,8 +44,17 @@ public class Veiculo {
 		this.marca = marca;
 		this.placa = placa;
 		this.espf = espf;
-		this.datarevisao = datarevisao;
-		this.kminit = kminit;
+		this.img = img;
+
+	}
+	
+
+	public Veiculo(int idVeiculo, String tipo, String modelo, String marca) {
+		
+		this.idVeiculo = idVeiculo;
+		this.tipo = tipo;
+		this.modelo = modelo;
+		this.marca = marca;
 	}
 
 	public Veiculo(Map<String, String> args) {
@@ -71,12 +64,7 @@ public class Veiculo {
 		if (args.containsKey("modelo")) {
 			this.modelo = (args.get("modelo"));
 		}
-		if (args.containsKey("kminit")) {
-			this.kminit = args.get("kminit");
-		}
-		if (args.containsKey("datarevisao")) {
-			this.datarevisao = args.get("datarevisao");
-		}
+
 		if (args.containsKey("marca")) {
 			this.marca = args.get("marca");
 		}
@@ -85,6 +73,9 @@ public class Veiculo {
 		}
 		if (args.containsKey("espf")) {
 			this.espf = args.get(espf);
+		}
+		if (args.containsKey("img")) {
+			this.espf = args.get(img);
 		}
 	}
 
@@ -136,20 +127,12 @@ public class Veiculo {
 		this.espf = espf;
 	}
 
-	public String getDatarevisao() {
-		return datarevisao;
+	public String getImg() {
+		return img;
 	}
 
-	public void setDatarevisao(String datarevisao) {
-		this.datarevisao = datarevisao;
-	}
-
-	public String getKminit() {
-		return kminit;
-	}
-
-	public void setKminit(String kminit) {
-		this.kminit = kminit;
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 	@Override
@@ -171,9 +154,7 @@ public class Veiculo {
 
 	@Override
 	public String toString() {
-		return  idVeiculo + "\t" + tipo + "\t" + modelo + "\t" + marca
-				+ "\t" + placa +"\t" + espf + "\t" + datarevisao + "\t" + kminit + "\r\n";
+		return idVeiculo + "\t" + tipo + "\t" + modelo + "\t" + marca + "\t" + placa + "\t" + espf +"\t"+img+ "\r\n";
 	}
-	
 
 }
