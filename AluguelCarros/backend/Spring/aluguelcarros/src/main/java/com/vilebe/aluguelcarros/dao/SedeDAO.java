@@ -25,7 +25,7 @@ public class SedeDAO {
 		ps = con.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
-			sede = new Sede(rs.getInt("idSede"), rs.getString("nome"), rs.getString("estado"));
+			sede = new Sede(rs.getInt("idSede"), rs.getString("Sedenome"), rs.getString("estado"));
 			sedes.add(sede);
 		}
 		con.close();
@@ -34,7 +34,7 @@ public class SedeDAO {
 	}
 
 	public void addSedeSQL(Sede sede) throws SQLException {
-		String query = "insert into sede (nome,estado) values (?,?)";
+		String query = "insert into sede (Sedenome,estado) values (?,?)";
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(query);
 		ps.setString(1, sede.getNome());
@@ -56,7 +56,7 @@ public class SedeDAO {
 	public void updtSedeSQL(String id, Sede sede) throws SQLException {
 		String query = "update sede set ";
 		if (sede.getNome() != null) {
-			query += "nome = '" + sede.getNome() + "', ";
+			query += "Sedenome = '" + sede.getNome() + "', ";
 		}
 		if (sede.getestado() != null) {
 			query += "estado = '" + sede.getestado() + "', ";

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vilebe.aluguelcarros.dao.LocacaoDAO;
 import com.vilebe.aluguelcarros.domains.Cliente;
 import com.vilebe.aluguelcarros.domains.Locacao;
+import com.vilebe.aluguelcarros.domains.Sede;
 import com.vilebe.aluguelcarros.domains.Veiculo;
 import com.vilebe.aluguelcarros.process.LocacaoProcess;
 
@@ -24,6 +25,7 @@ public class LocacaoController {
 	JSONObject objJSON = new JSONObject();
 	private static Locacao locacao;
 	private static Cliente cliente;
+	private static Sede sede;
 	private static Veiculo veiculo;
 	private static LocacaoDAO ld = new LocacaoDAO();
 
@@ -43,13 +45,19 @@ public class LocacaoController {
 	@PostMapping(path = "/locadora/locacao")
 	public void criarLocacao(@RequestBody String body) throws JSONException {
 		objJSON = new JSONObject(body);
-		cliente = new Cliente(objJSON.getInt("idCliente"),
-				objJSON.getString("nome")
+		sede = new Sede(objJSON.getInt("idSede"));
+		cliente = new Cliente(objJSON.getInt("idCliente")
 				);
 		veiculo = new Veiculo(objJSON.getInt("idVeiculo"));
 
-		locacao = new Locacao(cliente, veiculo, objJSON.getString("DataRetirada"), objJSON.getString("LocalRetirada"),
-				objJSON.getString("DataDevolucao"), objJSON.getString("LocalDevolucao")
+		locacao = new Locacao(
+				cliente, 
+				veiculo,
+				sede,
+				objJSON.getString("DataRetirada"), 
+				objJSON.getString("LocalRetirada"),
+				objJSON.getString("DataDevolucao"),
+				objJSON.getString("LocalDevolucao")
 
 		);
 

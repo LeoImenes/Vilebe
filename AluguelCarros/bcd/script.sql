@@ -38,6 +38,7 @@ CREATE TABLE Locacao(
     idLoc integer not null auto_increment primary key,
     idCliente integer NOT NULL,
     idVeiculo INTEGER NOT NULL,
+    idSede Integer not null,
     DataDevolucao VARCHAR(20) not null,
     DataRetirada VARCHAR(20) not null,
     LocalRetirada VARCHAR(150) not null,
@@ -46,7 +47,7 @@ CREATE TABLE Locacao(
 
 CREATE TABLE Sede(
     idSede integer not null auto_increment primary key,
-    nome VARCHAR(100),
+    Sedenome VARCHAR(100),
     estado VARCHAR(3)
 );
 

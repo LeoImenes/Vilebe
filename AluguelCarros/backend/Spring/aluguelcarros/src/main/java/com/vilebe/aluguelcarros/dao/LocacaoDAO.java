@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import com.vilebe.aluguelcarros.domains.Cliente;
 import com.vilebe.aluguelcarros.domains.Locacao;
-
+import com.vilebe.aluguelcarros.domains.Sede;
 import com.vilebe.aluguelcarros.domains.Veiculo;
 
 public class LocacaoDAO {
@@ -23,7 +23,8 @@ public class LocacaoDAO {
 		locacaos = new ArrayList<>();
 		
 		String query = "select * from Locacao inner join Cliente on (Cliente.idCliente = Locacao.idCliente)"
-		+"inner join Veiculo on (Veiculo.idVeiculo = Locacao.idVeiculo)";
+		+"inner join Veiculo on (Veiculo.idVeiculo = Locacao.idVeiculo)"
+		+"inner join Sede on (Sede.idSede = Locacao.idSede)";
 		
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(query);
@@ -45,10 +46,16 @@ public class LocacaoDAO {
 					rs.getString("placa"), 
 					rs.getString("espf"), 
 					rs.getString("img"));
+			Sede sed = new Sede(
+					rs.getInt("idSede"), 
+					rs.getString("Sedenome"),
+					rs.getString("estado")
+					);
 			locacao = new Locacao(
 					rs.getInt("idLoc"),
 					cli,
 					vei,
+					sed,
 					rs.getString("DataRetirada"),
 					rs.getString("LocalRetirada"),
 					rs.getString("DataDevolucao"),
@@ -64,16 +71,17 @@ public class LocacaoDAO {
 	} 
 	
 	public void criar(Locacao loc) throws SQLException {
-		String query = "insert into Locacao (idCliente, idVeiculo, DataRetirada, LocalRetirada, DataDevolucao, LocalDevolucao) values (?, ?, ?, ?,?,?);";
+		String query = "insert into Locacao (idCliente, idVeiculo,idSede, DataRetirada, LocalRetirada, DataDevolucao, LocalDevolucao) values (?,?, ?, ?, ?,?,?);";
 		
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(query);
 		ps.setInt(1, loc.getIdCliente().getIdCliente());
 		ps.setInt(2, loc.getIdVeiculo().getIdVeiculo());
-		ps.setString(3, loc.getDataRetirada());
-		ps.setString(4, loc.getLocalRetirada());
-		ps.setString(5, loc.getDataDevolucao());
-		ps.setString(6, loc.getLocalDevolucao());
+		ps.setInt(3, loc.getIdSede().getidSede());
+		ps.setString(4, loc.getDataRetirada());
+		ps.setString(5, loc.getLocalRetirada());
+		ps.setString(6, loc.getDataDevolucao());
+		ps.setString(7, loc.getLocalDevolucao());
 		ps.execute();
 		
 		con.close();

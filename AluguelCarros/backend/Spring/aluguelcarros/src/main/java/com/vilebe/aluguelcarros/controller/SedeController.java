@@ -41,7 +41,7 @@ public class SedeController {
 	@PostMapping(path = "/locadora/sede")
 	public void criarSede(@RequestBody String body) throws JSONException {
 		OBJjson = new JSONObject(body);
-		sede = new Sede(OBJjson.getString("nome"), OBJjson.getString("estado"));
+		sede = new Sede(OBJjson.getString("Sedenome"), OBJjson.getString("estado"));
 		System.out.println(OBJjson);
 		SedeProcess.addSede(sede);
 	}
@@ -56,7 +56,7 @@ public class SedeController {
 	@PutMapping(path = "/locadora/sede")
 	public void alterarSede(@RequestBody String body) throws JSONException {
 		OBJjson = new JSONObject(body);
-		String[] params = { "nome", "estado" };
+		String[] params = { "Sedenome", "estado" };
 		Map<String, String> args = new HashMap<String, String>();
 		for (int i = 0; i < params.length; i++) {
 			if (!OBJjson.isNull(params[i])) {

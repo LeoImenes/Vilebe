@@ -8,40 +8,44 @@ public class Locacao {
 	private int idLoc;
 	private Cliente idCliente;
 	private Veiculo idVeiculo;
+	private Sede idSede;
 	private String DataDevolucao;
 	private String DataRetirada;
 	private String LocalRetirada;
 	private String LocalDevolucao;
 
-	public Locacao(int idLoc, Cliente idCliente, Veiculo idVeiculo, String dataDevolucao, String dataRetirada,
+	public Locacao(int idLoc, Cliente idCliente, Veiculo idVeiculo,Sede idSede, String dataDevolucao, String dataRetirada,
 			String localRetirada, String localDevolucao) {
 
 		this.idLoc = idLoc;
 		this.idCliente = idCliente;
 		this.idVeiculo = idVeiculo;
+		this.idSede = idSede;
 		DataDevolucao = dataDevolucao;
 		DataRetirada = dataRetirada;
 		LocalRetirada = localRetirada;
 		LocalDevolucao = localDevolucao;
 	}
 
-	public Locacao(Cliente idCliente, Veiculo idVeiculo, String dataDevolucao, String dataRetirada,
+	public Locacao(Cliente idCliente, Veiculo idVeiculo, Sede idSede, String dataDevolucao, String dataRetirada,
 			String localRetirada, String localDevolucao) {
 
 		this.idCliente = idCliente;
 		this.idVeiculo = idVeiculo;
+		this.idSede = idSede;
 		DataDevolucao = dataDevolucao;
 		DataRetirada = dataRetirada;
 		LocalRetirada = localRetirada;
 		LocalDevolucao = localDevolucao;
 	}
 
-	public Locacao(String idLoc, Cliente idCliente, Veiculo idVeiculo, String dataDevolucao, String dataRetirada,
+	public Locacao(String idLoc, Cliente idCliente, Veiculo idVeiculo,Sede idSede, String dataDevolucao, String dataRetirada,
 			String localRetirada, String localDevolucao) {
 
 		this.idLoc = parseInt(idLoc);
 		this.idCliente = idCliente;
 		this.idVeiculo = idVeiculo;
+		this.idSede = idSede;
 		DataDevolucao = dataDevolucao;
 		DataRetirada = dataRetirada;
 		LocalRetirada = localRetirada;
@@ -65,6 +69,15 @@ public class Locacao {
 
 	public int getIdLoc() {
 		return idLoc;
+	}
+	
+
+	public Sede getIdSede() {
+		return idSede;
+	}
+
+	public void setIdSede(Sede idSede) {
+		this.idSede = idSede;
 	}
 
 	public void setIdLoc(int idLoc) {

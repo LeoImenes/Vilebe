@@ -5,20 +5,20 @@ import java.util.Objects;
 
 public class Sede {
 	private int idSede;
-	private String nome;
+	private String Sedenome;
 	private String estado;
 
-	public Sede(int idSede, String nome, String estado) {
+	public Sede(int idSede, String Sedenome, String estado) {
 
 		this.idSede = idSede;
-		this.nome = nome;
+		this.Sedenome = Sedenome;
 		this.estado = estado;
 	}
 
-	public Sede(String idSede, String nome, String estado) {
+	public Sede(String idSede, String Sedenome, String estado) {
 
 		this.idSede = Integer.parseInt(idSede);
-		this.nome = nome;
+		this.Sedenome = Sedenome;
 		this.estado = estado;
 	}
 
@@ -36,15 +36,15 @@ public class Sede {
 		this.idSede = Integer.parseInt(idSede);
 	}
 
-	public Sede(String nome, String estado) {
+	public Sede(String Sedenome, String estado) {
 
-		this.nome = nome;
+		this.Sedenome = Sedenome;
 		this.estado = estado;
 	}
 
 	public Sede(Map<String, String> args) {
-		if (args.containsKey("nome")) {
-			this.nome = args.get("nome");
+		if (args.containsKey("Sedenome")) {
+			this.Sedenome = args.get("Sedenome");
 		}
 		if (args.containsKey("estado")) {
 			this.estado = args.get("estado");
@@ -61,11 +61,11 @@ public class Sede {
 	}
 
 	public String getNome() {
-		return nome;
+		return Sedenome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String Sedenome) {
+		this.Sedenome = Sedenome;
 	}
 
 	public String getestado() {
@@ -95,7 +95,7 @@ public class Sede {
 
 	@Override
 	public String toString() {
-		return idSede + "\t" + nome + "\t" + estado + "\r\n";
+		return idSede + "\t" + Sedenome + "\t" + estado + "\r\n";
 	}
 
 }
