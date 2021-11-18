@@ -13,8 +13,18 @@ public class Cliente {
 	private Login login;
 	
 	
-	public Cliente() {}
+
 	
+	
+	public Cliente(int idCliente, String nome, int idade, String cnh, String cpf, String telefone) {
+		super();
+		this.idCliente = idCliente;
+		this.nome = nome;
+		this.idade = idade;
+		this.cnh = cnh;
+		this.cpf = cpf;
+		this.telefone = telefone;
+	}
 	public Cliente(int idCliente) {
 		this.idCliente = idCliente;
 	}
@@ -48,7 +58,8 @@ public class Cliente {
 		this.telefone = telefone;
 		this.login = login;
 	}
-	
+
+
 	public Cliente(int idCliente, String nome) {
 		
 		this.idCliente = idCliente;

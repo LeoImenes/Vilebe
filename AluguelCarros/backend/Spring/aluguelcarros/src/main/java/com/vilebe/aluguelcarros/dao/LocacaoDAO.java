@@ -8,68 +8,76 @@ import java.util.ArrayList;
 
 import com.vilebe.aluguelcarros.domains.Cliente;
 import com.vilebe.aluguelcarros.domains.Locacao;
-import com.vilebe.aluguelcarros.domains.Login;
+
 import com.vilebe.aluguelcarros.domains.Veiculo;
 
 public class LocacaoDAO {
 
 	private static Connection con;
 	private static PreparedStatement ps;
-
+	
 	private static Locacao locacao;
-	private static Veiculo veiculo;
-	private static Cliente cliente;
-	public static ArrayList<Locacao> locacoes;
-
-	public ArrayList<Locacao> readAll() throws SQLException {
-		locacoes = new ArrayList<>();
-
-		String query = "select * from Locacao" 
-		+ "from locacao  inner join Cliente on (Cliente.idCliente = Locacao.idCliente)"
-		+ "inner join Veiculo on (Locacao.idVeiculo = Veiculo.idVeiculo)";
-
+	private static ArrayList<Locacao> locacaos;
+	
+	public ArrayList<Locacao> readAll() throws SQLException{
+		locacaos = new ArrayList<>();
+		
+		String query = "select * from Locacao inner join Cliente on (Cliente.idCliente = Locacao.idCliente)"
+		+"inner join Veiculo on (Veiculo.idVeiculo = Locacao.idVeiculo)";
+		
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(query);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next()) {
-			Veiculo v = new Veiculo(
-					rs.getInt("idVeiculo"),
-					rs.getString("tipo"),
-					rs.getString("modelo"),
-					rs.getString("marca")
-					);
-			Cliente c = new Cliente(
-					rs.getInt("idCliente"),
-					rs.getString("nome")
-					);
 		
+		while(rs.next()) {
+			Cliente cli = new Cliente(
+					rs.getInt("idCliente"),
+					rs.getString("nome"),
+					rs.getInt("idade"),
+					rs.getString("cnh"),
+					rs.getString("cpf"),
+					rs.getString("telefone"));
+			Veiculo vei = new Veiculo(
+					rs.getInt("idVeiculo"), 
+					rs.getString("tipo"), 
+					rs.getString("modelo"),
+					rs.getString("marca"),
+					rs.getString("placa"), 
+					rs.getString("espf"), 
+					rs.getString("img"));
 			locacao = new Locacao(
 					rs.getInt("idLoc"),
-					c,
-					v,
+					cli,
+					vei,
 					rs.getString("DataRetirada"),
-					rs.getString("DataDevolucao"),
 					rs.getString("LocalRetirada"),
+					rs.getString("DataDevolucao"),
 					rs.getString("LocalDevolucao")
+					
 					);
-			locacoes.add(locacao);
+			locacaos.add(locacao);
 		}
-	
+		
 		con.close();
-		return locacoes;
-	}
-	public void criar(Locacao loc) throws SQLException{
-		System.out.println(loc);
-		String query = "select * from Locacao "
-				+ "inner join cliente on (cliente.idCliente = locacao.idCliente) "
-				+"inner join veiculo on (veiculo.idVeiculo = locacao.idVeiculo)"
-				+ "where nome = '" + cliente.getNome() + "', tipo  = '" + veiculo.getTipo() + "'";
-		System.out.println(query);
+		return locacaos;
+		
+	} 
+	
+	public void criar(Locacao loc) throws SQLException {
+		String query = "insert into Locacao (idCliente, idVeiculo, DataRetirada, LocalRetirada, DataDevolucao, LocalDevolucao) values (?, ?, ?, ?,?,?);";
+		
 		con = ConnectionDB.getConnection();
 		ps = con.prepareStatement(query);
-		ResultSet rs = ps.executeQuery();
+		ps.setInt(1, loc.getIdCliente().getIdCliente());
+		ps.setInt(2, loc.getIdVeiculo().getIdVeiculo());
+		ps.setString(3, loc.getDataRetirada());
+		ps.setString(4, loc.getLocalRetirada());
+		ps.setString(5, loc.getDataDevolucao());
+		ps.setString(6, loc.getLocalDevolucao());
+		ps.execute();
 		
-
+		con.close();
 	}
-		
 }
+
+

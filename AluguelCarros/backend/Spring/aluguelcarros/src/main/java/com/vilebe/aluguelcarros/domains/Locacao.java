@@ -48,7 +48,7 @@ public class Locacao {
 		LocalDevolucao = localDevolucao;
 	}
 	
-
+	
 
 	public Locacao(int idLoc) {
 
@@ -118,5 +118,12 @@ public class Locacao {
 	public void setLocalDevolucao(String localDevolucao) {
 		LocalDevolucao = localDevolucao;
 	}
+
+	@Override
+	public String toString() {
+		return idLoc + "\t" + DataDevolucao + "\t" + DataRetirada
+				+ "\t" + LocalRetirada + "\t" + LocalDevolucao + "\r\n";
+	}
+	
 
 }
