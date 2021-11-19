@@ -86,6 +86,13 @@ public class LocacaoDAO {
 		
 		con.close();
 	}
+	public void delLocSQL(String id) throws SQLException {
+		String query = "delete from Locacao where idLoc = " + id;
+		con = ConnectionDB.getConnection();
+		ps = con.prepareStatement(query);
+		ps.execute();
+		con.close();
+	}
 }
 
 

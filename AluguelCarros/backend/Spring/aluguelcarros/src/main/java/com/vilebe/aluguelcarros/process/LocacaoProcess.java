@@ -25,5 +25,14 @@ public class LocacaoProcess {
 			e.printStackTrace();
 		}
 	}
+	public static void delLoc(String id) {
+		try {
+			ld.delLocSQL(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }
 

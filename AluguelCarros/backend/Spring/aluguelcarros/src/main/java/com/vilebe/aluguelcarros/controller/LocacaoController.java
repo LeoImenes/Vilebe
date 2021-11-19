@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,8 @@ import com.vilebe.aluguelcarros.domains.Locacao;
 import com.vilebe.aluguelcarros.domains.Sede;
 import com.vilebe.aluguelcarros.domains.Veiculo;
 import com.vilebe.aluguelcarros.process.LocacaoProcess;
+import com.vilebe.aluguelcarros.process.SedeProcess;
+import com.vilebe.aluguelcarros.process.VeiculoProcess;
 
 
 @RestController
@@ -62,5 +65,10 @@ public class LocacaoController {
 		);
 
 		LocacaoProcess.criar(locacao);
+	}
+	@DeleteMapping(path = "/locadora/locacao")
+	public void excluirVeiculo(@RequestBody String id) throws JSONException {
+		objJSON = new JSONObject(id);
+		LocacaoProcess.delLoc(objJSON.getString("idLoc"));
 	}
 }
